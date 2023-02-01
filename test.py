@@ -89,7 +89,7 @@ def bar_chart():
   
 with st.form(key = 'Form1'):
   with st.sidebar:
-    select_chart = st.sidebar.radio('데이터 분석 결과 확인 ?', ('금리와 집 값 빠르게 파악하기',
+    select_language = st.sidebar.radio('데이터 분석 결과 확인 ?', ('금리와 집 값 빠르게 파악하기',
                                                               '야구 순위와 승률 빠르게 파악하기',
                                                               '다른 데이터 분석(진행중)'))
 
