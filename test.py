@@ -4,17 +4,15 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-#money = pd.read_csv("money_data7.csv")
-
 st.title(':polar_bear: This is :orange[july-ya] page :polar_bear:')
 #st.sidebar.success("Select a demo above.")
 
 def plotting_demo():
   
-  uploaded_file = st.file_uploader("Choose a file")
+  #uploaded_file = st.file_uploader("Choose a file")
   
-  money = pd.read_csv(uploaded_file)
-  #money = pd.read_csv("money_data7.csv")
+  #money = pd.read_csv(uploaded_file)
+  money = pd.read_csv("money_data7.csv")
   
   option = st.selectbox('How would you like to choice year ?', ('2020', '2021', '2022'))
   option2 = int(option)
@@ -75,26 +73,31 @@ def bar_chart():
     
   fig, ax = plt.subplots(figsize=(12,8))
 
-  colors = ['C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7' ,'C8', 'C9', 'C10' ]
-  plt.bar(  x,  y,  color= colors ) 
+  colors = ['plum', 'cornflowerblue', 'lightgreen', 'khaki', 'salmon', 'springgreen', 'lightblue' ,'lightcoral', 'orchid', 'chocolate' ]
+  plt.bar(x, y, color= colors) 
 
   for num, v in enumerate(y):
-    plt.text (  num -0.4  ,   v + 0.01 ,  v   )
+    plt.text (num -0.4, v + 0.01, v)
 
   plt.title( "year korea baseball winrate data", position=(0.5,1.1))
+  
+  st.balloons()
   st.pyplot(fig)
   st.dataframe(df7)  
- 
+
+#st.set_page_config(layout = "centered")
   
 with st.form(key = 'Form1'):
   with st.sidebar:
-    select_chart = st.sidebar.radio('What do you want ?', ('line', 'bar', 'pie', 'box', 'histogram', 'corr', 'word cloud'))
+    select_chart = st.sidebar.radio('데이터 분석 결과 확인 ?', ('금리와 집 값 빠르게 파악하기',
+                                                              '야구 순위와 승률 빠르게 파악하기',
+                                                              '다른 데이터 분석(진행중)'))
 
-if select_chart == 'line':
+if select_language == '금리와 집 값 빠르게 파악하기':
   try:
     plotting_demo()
   except:
     pass
 
-elif select_chart == 'bar':
+elif select_language == '야구 순위와 승률 빠르게 파악하기':
   bar_chart()
