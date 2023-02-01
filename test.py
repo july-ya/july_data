@@ -3,8 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-#st.title(':money_with_wings: **_:green[MONEY]_** :money_with_wings:')
-st.title(':polar_bear: This is **_:orange[july-ya]_** page :polar_bear:')
+st.title(':rabbit: This is :orange[july-ya] page :rabbit:')
 #st.sidebar.success("Select a demo above.")
 
 def plotting_demo():
