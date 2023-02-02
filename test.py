@@ -26,7 +26,7 @@ def plotting_demo():
   # 선택한 년도가 뭐인지 확인 시켜줌
   st.write('You selected:', option)
 
-  # 서낵한 년도에 해당하는 money 데이터 프레임을 money에 할당
+  # 선택한 년도에 해당하는 money 데이터 프레임을 money에 할당
   money = money[:] [money['A_YEAR']== option2]
 
   # 전역변수 aa 설정
@@ -57,7 +57,6 @@ def plotting_demo():
   plt.xticks(tuple(money['A_MONTH']))
   plt.title("House Price", size = 15, color = 'lightpink')
 
-  st.snow()
   st.pyplot(fig)
   
   #st.dataframe(money)
@@ -85,8 +84,12 @@ def bar_chart():
   st.write('You selected:', option)
 
   df7  =  baseball[:] [ baseball.년도==option2 ]
-  x = df7.팀
-  y = df7.승률
+  
+  global bb
+  
+  bb = df7
+  x = bb.팀
+  y = bb.승률
     
   fig, ax = plt.subplots(figsize=(12,8))
 
@@ -98,9 +101,9 @@ def bar_chart():
 
   plt.title( "year korea baseball winrate data", position=(0.5,1.1))
   
-  st.balloons()
+  
   st.pyplot(fig)
-  st.dataframe(df7)  
+  #st.dataframe(df7)  
 
 #st.set_page_config(layout = "centered")
   
@@ -116,10 +119,25 @@ if select_language == '금리와 집 값 빠르게 파악하기':
   with tab1:
     tab1.subheader("A tab with a chart")
     plotting_demo()
+    st.snow()
     
   with tab2:
     tab2.subheader("A tab with the data")
     st.dataframe(aa)
+    st.snow()
     
 elif select_language == '야구 순위와 승률 빠르게 파악하기':
-  bar_chart()
+  tab1, tab2 = st.tabs(["📈 Chart", "🗃 Data"])
+
+    with tab1:
+    tab1.subheader("A tab with a chart")
+    bar_chart()
+    st.balloons()
+    
+  with tab2:
+    tab2.subheader("A tab with the data")
+    st.dataframe(bb)
+    st.balloons()
+  
+  
+  
